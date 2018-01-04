@@ -5,12 +5,12 @@ var config = {
     token: 'ChineseEdu',
     appid: 'appid',
     encodingAESKey: 'IqIyWfkypfzJjq5fLiRpeba6ZPOGQz89ohIm2UryI5p',
-    checkSignature: true // 可选，默认为true。由于微信公众平台接口调试工具在明文模式下不发送签名，所以如要使用该测试工具，请将其设置为false
+    checkSignature: false // 可选，默认为true。由于微信公众平台接口调试工具在明文模式下不发送签名，所以如要使用该测试工具，请将其设置为false
 };
 
 module.exports = function (app ) {
 
-    app.use('/wechat', wechat(config, function (req, res, next) {
+    app.get('/wechat', wechat(config, function (req, res, next) {
         // 微信输入信息都在req.weixin上
         var message = req.weixin;
         if (message.FromUserName === 'diaosi') {
