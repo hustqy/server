@@ -5,8 +5,9 @@ var config = require('../config/config');
 var opwechat = require('../controller/wechat');
 
 module.exports = function (app ) {
+    opwechat.showMenu();
+
     app.post('/wechat', wechat(config, function (req, res, next) {
-        // 微信输入信息都在req.weixin上
         var message = req.weixin;
         console.log(message);
     }));
@@ -14,5 +15,6 @@ module.exports = function (app ) {
         // 微信输入信息都在req.weixin上
         var message = req.weixin;
         console.log(message);
+
     }));
 };
